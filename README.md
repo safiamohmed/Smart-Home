@@ -41,7 +41,7 @@ The following diagram illustrates the main modules of the system and their inter
 - **LM35 Module (Slave):** Measures temperature.
 - **Device Control Module (Slave):** Controls LEDs, AC units, and TVs.
 
-![Class Diagram](class diagram.png)
+![Class Diagram]([class diagram.png](https://drive.google.com/file/d/1lImYSE5bosB1kEqoDCLOMBrpM6WST2rQ/view?usp=drive_link))
 
 ## Hardware Components
 - **2x ATmega32 Microcontrollers:** One for the Master, one for the Slave.
