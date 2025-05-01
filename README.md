@@ -41,7 +41,7 @@ The following diagram illustrates the main modules of the system and their inter
 - **LM35 Module (Slave):** Measures temperature.
 - **Device Control Module (Slave):** Controls LEDs, AC units, and TVs.
 
-![Class Diagram](class_diagram.png)
+![Class Diagram](class diagram.png)
 
 ## Hardware Components
 - **2x ATmega32 Microcontrollers:** One for the Master, one for the Slave.
@@ -173,9 +173,35 @@ The following diagram illustrates the main modules of the system and their inter
 - The temperature threshold (Slave) is set to 50°C. Adjust this value in the `ISR()` function in `main.c` (Slave) if needed.
 - Ensure the ATmega32 clock frequency matches your crystal oscillator (typically 8MHz). Adjust the F_CPU definition if necessary.
 
+## Troubleshooting
+- **Buzzer Not Working (Master):**
+  - Ensure the buzzer is connected to PD5.
+  - Test the buzzer by connecting it directly to VCC (5V) and Ground.
+  - Check the transistor (2N1711) for proper operation using a multimeter.
+- **LCD Not Displaying (Both Units):**
+  - Verify the LCD connections (Master: RS: PD0, RW: PD1, E: PD2, D4-D7: PC0-PC3; Slave: Data: PORTD, RS: PA1, RW: PA2, E: PA3).
+  - Ensure the LCD contrast is adjusted properly (via a potentiometer on the V0 pin).
+- **Keypad Not Responding (Master):**
+  - Check the keypad connections to PORTA.
+  - Test the keypad by displaying pressed keys on the LCD.
+- **Motor Not Moving (Master):**
+  - Verify the motor connections and driver circuit (PA4, PA5).
+  - Ensure the motor power supply is adequate.
+- **Temperature Not Displaying (Slave):**
+  - Ensure the LM35 is connected to PA0 and powered correctly (5V).
+  - Check the ADC configuration in `ADC_config.h`.
+- **Devices Not Responding (Slave):**
+  - Verify SPI connections (PB4-PB7) between Master and Slave.
+  - Ensure the device control pins (PC0-PC5, PA4-PA5) are connected correctly.
+
 ## Future Improvements
 - Add EEPROM storage to save the password (Master), allowing dynamic changes.
 - Implement a real-time clock (RTC) to log access attempts (Master) and temperature readings (Slave).
 - Add more sophisticated device control (e.g., dimming LEDs, setting AC temperature).
 - Integrate wireless communication (e.g., via UART or I2C) for remote control.
 
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Contributors
+- [Your Name] - Developer
