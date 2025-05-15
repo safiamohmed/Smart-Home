@@ -51,6 +51,7 @@ int main()
 			if(Local_flag==1){
 				LCD_voidGoToXY(1,0);
 				LCD_voidSendString("WRONG PASSWORD");
+				spi_transmit('f');
 				_delay_ms(2000);
 				LCD_voidClearScreen();
 				Local_flag=0;
@@ -58,9 +59,10 @@ int main()
 			else if(Local_flag==0)
 			{
 				LCD_voidClearScreen();
-				LCD_voidSendString("HEY!!");
+				LCD_voidSendString("Welcome Home! ");
 				LCD_voidGoToXY(1,0);
-				LCD_voidSendString("YOU'Re Good Man");
+				LCD_voidSendString("Door Unlocked");
+				spi_transmit('p');
 				 motorinit();
 						clockwise();
 						_delay_ms(2000);
